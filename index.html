@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARMEĐANO</title>
+    <link rel="icon" type="image/x-icon" href="logo.png"> 
+    
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <nav class="container">
+        <div class="header-left">
+            <img src="ima1ges.jpg" alt="Logo kompanije" class="slika">
+            <a href="#hero-top" class="logo-link menu-link-style">PARMEĐANO</a>
+        </div>
+        
+        <ul class="main-menu">
+            <li class="menu-item"><a href="#hero-top" class="menu-link-style">POČETNA</a></li>
+            <li class="menu-item"><a href="#menu-section" class="menu-link-style">MENI</a></li>
+            <li class="menu-item"><a href="#gallery-section" class="menu-link-style">GALERIJA</a></li>
+            <li class="menu-item"><a href="#contact-section" class="menu-link-style">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-section" id="hero-top"> 
+        <div class="hero-content">
+            <h1 class="hero-title">Gde svaka pica ima dušu.</h1>
+            <p class="hero-subtitle">Parmeđano</p>
+            <button id="saznajte-vise-btn" class="cta-button">SAZNAJTE VIŠE</button>
+        </div>
+    </header>
+    
+    <main class="main-content" id="main-info-section">
+        <p class="info-text">
+            
+            <br>Autentična napolitanska pica koja je pripremljena po pravilima tradicije i srcem domaćina.
+            <br>
+            <br>
+        </p>
+    </main>
+    
+    <section class="menu-section" id="menu-section">
+        <h2 class="section-title">MENI</h2>
+        <div class="menu-image-container menu-grid">
+            <img src="meni.jpg" alt="Parmeđano Meni 1" class="menu-img menu-img-clickable">
+            <img src="meni1.jpg" alt="Parmeđano Meni 2" class="menu-img menu-img-clickable">
+        </div>
+    </section>
+    
+    <div id="menu-modal" class="modal">
+        <span class="close-btn">×</span>
+        <img class="modal-content" id="modal-image" alt="Uvećani Meni">
+    </div>
+    
+    <section class="gallery-section" id="gallery-section">
+        <div class="gallery-header-container">
+             <div class="gallery-text">
+                 <p class="section-title-left">
+                     **Istaknuti pice**
+                 </p>
+                 <p class="section-description-left">
+                      Pregledajte neke od naših istaknutih pica.
+                 </p>
+             </div>
+        </div>
+        
+        <div class="gallery-content">
+            <h2 class="gallery-title">GALERIJA</h2>
+            
+            <div class="image-grid">
+                <div class="gallery-item">
+                    <img src="slika1.jpg" alt="Capricciosa" class="gallery-img">
+                    <p class="pizza-name">Capricciosa</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="slika2.jpg" alt="Diavolo" class="gallery-img">
+                    <p class="pizza-name">Diavolo</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="slika3.jpg" alt="Pizza dolce" class="gallery-img">
+                    <p class="pizza-name">Pizza dolce</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="slika4.jpg" alt="Dolce kalcona" class="gallery-img">
+                    <p class="pizza-name">Dolce kalcona</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact-section">
+        <div class="contact-content-wrapper">
+            <h2 class="contact-title">KONTAKT</h2> 
+            <p class="contact-subtitle">Sve na jednom mestu – Royal Clean!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i> 
+                    <a href="https://maps.app.goo.gl/mRfqyMyUMGo6nnBs9" target="_blank" class="contact-link">Milutina Bojića 1, Loznica 15300</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i> 
+                    <a href="tel:0617439534" class="contact-link">0617439534</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram contact-icon"></i> 
+                    <a href="https://www.instagram.com/parmedjano015?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="contact-link">parmedjano015</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('a[href^="#"], button#saznajte-vise-btn').forEach(element => {
+            element.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                const targetId = (href && href.length > 1 && href.startsWith('#')) ? href : '#main-info-section'; 
+                
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    if (href === '#hero-top' || href === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        const navHeight = document.querySelector('.container').offsetHeight;
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - navHeight; 
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                } else if (this.tagName === 'BUTTON' && this.id === 'saznajte-vise-btn') {
+                    e.preventDefault();
+                    const navHeight = document.querySelector('.container').offsetHeight;
+                    const targetElement = document.querySelector('#main-info-section');
+                    
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // AŽURIRANO: JavaScript za modal (uvećanje obe slike menija)
+        const modal = document.getElementById('menu-modal');
+        const menuImages = document.querySelectorAll('.menu-img-clickable'); // Selektuje sve klikabilne slike menija
+        const modalImage = document.getElementById('modal-image');
+        const closeBtn = document.getElementsByClassName('close-btn')[0];
+
+        menuImages.forEach(image => {
+            image.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImage.src = this.src; // Postavlja URL kliknute slike u modal
+            });
+        });
+
+        // Kada korisnik klikne na (x), zatvori modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Kada korisnik klikne bilo gde izvan modala, zatvori ga
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    
+</body> 
+</html>
